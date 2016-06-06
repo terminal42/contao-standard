@@ -44,6 +44,41 @@ doctrine:
                 password: "%database_password%"
                 dbname:   "%database_name%"
                 charset:  UTF8
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.default
+        auto_mapping: true
+
+        metadata_cache_driver:
+            type: service
+            id: doctrine_cache.providers.doctrine_metadata_cache
+        result_cache_driver:
+            type: service
+            id: doctrine_cache.providers.doctrine_result_cache
+        query_cache_driver:
+            type: service
+            id: doctrine_cache.providers.doctrine_query_cache
+
+doctrine_migrations: ~
+
+doctrine_cache:
+    providers:
+        google_api:
+            file_system:
+                extension: ".cache"
+                directory: "%kernel.cache_dir%/google_api/"
+        doctrine_metadata_cache:
+            file_system:
+                extension: ".cache"
+                directory: "%kernel.cache_dir%/doctrine/metadata"
+        doctrine_result_cache:
+            file_system:
+                extension: ".cache"
+                directory: "%kernel.cache_dir%/doctrine/result"
+        doctrine_query_cache:
+            file_system:
+                extension: ".cache"
+                directory: "%kernel.cache_dir%/doctrine/query"
 
 # SwiftMailer configuration
 swiftmailer:
@@ -56,10 +91,6 @@ swiftmailer:
 
 # Lexik configuration
 lexik_maintenance:
-    authorized:
-        path: ^/contao($|/)
-        attributes:
-            _bypass_maintenance: true
     driver:
-        class:   "Lexik\\Bundle\\MaintenanceBundle\\Drivers\\FileDriver"
-        options: { file_path: "%kernel.root_dir%/cache/lock" }
+        class:   Lexik\Bundle\MaintenanceBundle\Drivers\FileDriver
+        options: {file_path: "%kernel.root_dir%/cache/lock"}

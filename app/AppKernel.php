@@ -26,16 +26,22 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
-            new Knp\Bundle\TimeBundle\KnpTimeBundle(),
-            new Lexik\Bundle\MaintenanceBundle\LexikMaintenanceBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+
+            new Lexik\Bundle\MaintenanceBundle\LexikMaintenanceBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+
             new Contao\CoreBundle\ContaoCoreBundle(),
-            new Contao\CalendarBundle\ContaoCalendarBundle(),
-            new Contao\CommentsBundle\ContaoCommentsBundle(),
-            new Contao\FaqBundle\ContaoFaqBundle(),
-            new Contao\ListingBundle\ContaoListingBundle(),
-            new Contao\NewsBundle\ContaoNewsBundle(),
-            new Contao\NewsletterBundle\ContaoNewsletterBundle(),
+
+            new Terminal42\FolderpageBundle\Terminal42FolderpageBundle(),
+            new Contao\CoreBundle\HttpKernel\Bundle\ContaoModuleBundle('ce-access', $this->getRootDir()),
+            new Contao\CoreBundle\HttpKernel\Bundle\ContaoModuleBundle('multicolumnwizard', $this->getRootDir()),
+            new Contao\CoreBundle\HttpKernel\Bundle\ContaoModuleBundle('haste', $this->getRootDir()),
+            new Contao\CoreBundle\HttpKernel\Bundle\ContaoModuleBundle('dcawizard', $this->getRootDir()),
+            new Contao\CoreBundle\HttpKernel\Bundle\ContaoModuleBundle('notification_center', $this->getRootDir()),
+            new Terminal42\LeadsBundle\Terminal42LeadsBundle(),
+
+            new AppBundle\AppBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'])) {

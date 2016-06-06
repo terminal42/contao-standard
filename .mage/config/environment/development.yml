@@ -1,0 +1,64 @@
+#development
+deployment:
+    user: example
+    from: ./
+    to: /home/example/public_html/development
+    excludes:
+        - .idea
+        - .mage
+        - ._*
+        - .DS_Store
+        - .gitignore
+        - phpunit.*
+        - bootstrap.php
+        - ^app/cache
+        - ^app/config/parameters.yml
+        - ^app/logs
+        - ^assets
+        - ^files
+        - ^images
+        - ^system/logs
+        - ^system/modules
+        - ^system/themes
+        - ^vendor
+        - ^web/assets
+        - ^web/bundles
+        - ^web/files
+        - ^web/share
+        - ^web/system
+        - ^web/app.php
+
+releases:
+    enabled: true
+    max: 5
+    symlink: current
+    directory: releases
+
+hosts:
+    - example.com
+
+tasks:
+    pre-deploy:
+        - build-styles
+        - build-scripts
+        - unit-tests
+    on-deploy:
+        - filesystem/link-shared-files:
+            linked_files:
+                - app/config/parameters.yml: relative
+            linked_folders:
+                - app/logs: relative
+                - files: relative
+                - images: relative
+        - composer-update
+        - composer/install
+        - symfony2/cache-clear: {optional: "--no-optional-warmers"} # will not build the internal cache
+        - symfony2/assets-install: {env: dev, symlink: true, relative: true}
+        - contao-install
+        - dev-controller
+        - maintenance-lock
+    post-release:
+        - symfony2/doctrine-migrate
+        - doctrine-clear
+        - symfony2/cache-clear: {optional: "--no-optional-warmers"} # will not build the internal cache
+        - maintenance-unlock

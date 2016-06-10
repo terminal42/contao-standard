@@ -18,7 +18,6 @@ deployment:
         - ^app/logs
         - ^assets
         - ^files
-        - ^images
         - ^system/logs
         - ^system/modules
         - ^system/themes
@@ -54,7 +53,6 @@ tasks:
             linked_folders:
                 - app/logs: relative
                 - files: relative
-                - images: relative
         - composer/install: {dev: false}
         - composer/generate-autoload
         - symfony2/cache-warmup: {env: prod}

@@ -16,7 +16,6 @@ deployment:
         - ^app/logs
         - ^assets
         - ^files
-        - ^images
         - ^system/logs
         - ^system/modules
         - ^system/themes
@@ -49,7 +48,6 @@ tasks:
             linked_folders:
                 - app/logs: relative
                 - files: relative
-                - images: relative
         - composer-update
         - composer/install
         - symfony2/cache-clear: {optional: "--no-optional-warmers"} # will not build the internal cache

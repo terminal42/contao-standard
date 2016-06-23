@@ -24,5 +24,5 @@ $kernel->boot();
 // Run the controller
 $controller = new InstallationController();
 $controller->setContainer($kernel->getContainer());
-$response = $controller->indexAction();
+$response = $controller->installAction();
 $response->send();

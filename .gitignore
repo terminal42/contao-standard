@@ -1,6 +1,10 @@
 # App config
 /app/config/parameters.yml
 
+# Generated files
+/web/layout/app.css
+/web/layout/app.js
+
 # Generated folders
 /assets/
 /files/

@@ -48,7 +48,7 @@ tasks:
             linked_folders:
                 - app/logs: relative
                 - files: relative
-        - composer-update
+        - composer-self-update
         - composer/install
         - symfony2/cache-clear: {optional: "--no-optional-warmers"} # will not build the internal cache
         - symfony2/assets-install: {env: dev, symlink: true, relative: true}

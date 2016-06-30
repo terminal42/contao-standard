@@ -4,7 +4,7 @@ namespace Task;
 
 use Mage\Task\BuiltIn\Composer\ComposerAbstractTask;
 
-class ComposerUpdate extends ComposerAbstractTask
+class ComposerSelfUpdate extends ComposerAbstractTask
 {
 
     /**

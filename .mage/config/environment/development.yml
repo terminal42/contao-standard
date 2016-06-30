@@ -56,7 +56,7 @@ tasks:
         - dev-controller
         - maintenance-lock
     post-release:
-        - symfony2/doctrine-migrate
+        - doctrine-migrate
         - doctrine-clear
         - symfony2/cache-clear: {optional: "--no-optional-warmers"} # will not build the internal cache
         - maintenance-unlock

@@ -60,7 +60,7 @@ tasks:
         - contao-install
         - maintenance-lock
     post-release:
-        - symfony2/doctrine-migrate: {env: prod}
+        - doctrine-migrate: {env: prod}
         - doctrine-clear: {env: prod}
         - symfony2/cache-clear: {env: prod}
         - maintenance-unlock

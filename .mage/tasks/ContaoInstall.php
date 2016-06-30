@@ -23,10 +23,8 @@ class ContaoInstall extends SymfonyAbstractTask
         $commands = [
             $this->getAppPath() . ' contao:install',
             $this->getAppPath() . ' contao:symlink',
-            'ln -s ../images web',
-            $this->getAppPath() . ' contao:automator purgePageCache',
-            $this->getAppPath() . ' contao:automator generateXmlFiles',
-            $this->getAppPath() . ' contao:automator rotateLogs',
+            'test -f "system/config/localconfig.php" && ' . $this->getAppPath() . ' contao:automator purgePageCache',
+            'test -f "system/config/localconfig.php" && ' . $this->getAppPath() . ' contao:automator generateXmlFiles',
         ];
 
         foreach ($commands as $command) {

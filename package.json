@@ -1,0 +1,28 @@
+{
+    "name": "contao-standard",
+    "repository": {
+        "type": "git",
+        "url": "git+github.com/terminal42/contao-standard.git"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "autoprefixer": "^6.3.6",
+        "browserify": "^13.0.0",
+        "gulp": "^3.9.1",
+        "gulp-clean-css": "^2.0.3",
+        "gulp-concat": "^2.6.0",
+        "gulp-install": "^0.6.0",
+        "gulp-postcss": "^6.1.1",
+        "gulp-rename": "^1.2.2",
+        "gulp-sass": "^2.2.0",
+        "gulp-sourcemaps": "^1.6.0",
+        "gulp-uglify": "^1.5.3",
+        "gulp-util": "^3.0.7",
+        "run-sequence": "^1.1.5",
+        "vinyl-buffer": "^1.0.0",
+        "vinyl-source-stream": "^1.1.0"
+    },
+    "devDependencies": {
+        "gulp": "^3.9.1"
+    }
+}

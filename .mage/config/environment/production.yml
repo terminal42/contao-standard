@@ -43,8 +43,7 @@ hosts:
 
 tasks:
     pre-deploy:
-        - build-styles
-        - build-scripts
+        - gulp: {env: prod}
         - unit-tests
     on-deploy:
         - filesystem/link-shared-files:

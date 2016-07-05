@@ -38,8 +38,7 @@ hosts:
 
 tasks:
     pre-deploy:
-        - build-styles
-        - build-scripts
+        - gulp
         - unit-tests
     on-deploy:
         - filesystem/link-shared-files:

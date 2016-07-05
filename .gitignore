@@ -12,6 +12,9 @@
 /templates/
 /vendor/
 
+# Node.js modules
+/node_modules/
+
 # Symlinked resources
 /web/assets
 /web/bundles/

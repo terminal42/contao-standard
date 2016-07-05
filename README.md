@@ -13,6 +13,7 @@ Our Contao edition is configured with the following defaults:
   * Doctrine DBAL & ORM;
   * Doctrine ORM file caching;
   * Doctrine Migrations;
+  * Gulp for assets;
   * Magallanes for deployment.
 
 It comes pre-configured with the following Symfony bundles:
@@ -57,12 +58,43 @@ in our Contao 4 projects.
   
   * Place your style sheets in /web/layout/styles, preferrably
     using SCSS includes in the main app.scss. There's a predefined
-    deployment task which will build the optimized CSS file.
+    Gulp and deployment task which will build the optimized CSS file.
   
   * Place your javascript in /web/layout/scripts. There's a predefined
-    deployment task which will build an optimized and minified JS file.
-    Additional scripts need to be added to the task in 
-    /.mage/tasks/BuildScripts.php
+    Gulp and deployment task which will build an optimized and minified JS file.
+
+
+Installing Gulp and dependencies
+--------------------------------
+
+`$ npm install`
+
+This will make sure, everything needed to build the source JS and CSS files etc.
+can be compiled into their respective targets.
+
+If you want to know what dependencies are needed, check the `package.json`
+file (or the node.js documentation).
+
+Because calling multiple commands after each other and in the correct
+order everytime you change something, we use Gulp to define tasks. A simple
+
+`$ ./node_modules/.bin/gulp`
+
+will execute the `default` task defined in the `gulpfile.js` and thus build
+the bundled Javascript and CSS files.
+
+If you want to change something on the source files and have Gulp rebuild
+all the files everytime you save your changes, simply use
+
+`$ ./node_modules/.bin/gulp watch`
+
+which will keep watching all source files until you end the process.
+
+Note: For production you should use
+
+`$ ./node_modules/.bin/gulp --production`
+
+because that will enable minifying (uglyfying) JS as well as CSS files.
 
 
 Setup & initial deployment

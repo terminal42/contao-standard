@@ -58,7 +58,7 @@ in our Contao 4 projects.
   
   * Place your style sheets in /web/layout/styles, preferrably
     using SCSS includes in the main app.scss. There's a predefined
-    Gulp and deplyoemtn task which will build the optimized CSS file.
+    Gulp and deployment task which will build the optimized CSS file.
   
   * Place your javascript in /web/layout/scripts. There's a predefined
     Gulp and deployment task which will build an optimized and minified JS file.

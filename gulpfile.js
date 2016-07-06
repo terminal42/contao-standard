@@ -13,6 +13,7 @@ const cleanCSS      = require('gulp-clean-css');
 const postcss       = require('gulp-postcss');
 const autoprefixer  = require('autoprefixer');
 const concat        = require('gulp-concat');
+const svgo          = require('gulp-svgo');
 
 const production    = !!gutil.env.production;
 
@@ -43,8 +44,16 @@ gulp.task('styles', function () {
         .pipe(gulp.dest('web/layout'));
 });
 
+// Run SVG optimization
+gulp.task('svgo', function () {
+    return gulp.src('web/layout/images/*')
+        .pipe(svgo())
+        .pipe(gulp.dest('web/layout/images'));
+});
+
 // Watch task
 gulp.task('watch', function () {
+    gulp.watch(['web/layout/images/*.svg', 'web/layout/images/**/*.svg'], ['svgo']);
     gulp.watch(['web/layout/scripts/*.js', 'web/layout/scripts/**/*.js'], ['scripts']);
     gulp.watch(['web/layout/styles/*.scss', 'web/layout/styles/**/*.scss'], ['styles']);
 });
@@ -53,7 +62,7 @@ gulp.task('watch', function () {
 gulp.task('default', ['build']);
 
 // Build task
-gulp.task('build', ['scripts', 'styles']);
+gulp.task('build', ['svgo', 'scripts', 'styles']);
 
 // Build and watch task
 gulp.task('build:watch', ['build', 'watch']);

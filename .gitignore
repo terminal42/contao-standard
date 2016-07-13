@@ -8,6 +8,7 @@
 # Generated folders
 /assets/
 /files/
+/node_modules/
 /system/
 /templates/
 /vendor/

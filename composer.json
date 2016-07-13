@@ -58,6 +58,9 @@
         "symfony-assets-install": "relative"
     },
     "scripts": {
+        "post-install-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap"
+        ],
         "post-update-cmd": [
             "Contao\\CoreBundle\\Composer\\ScriptHandler::generateRandomSecret",
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",

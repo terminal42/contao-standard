@@ -92,7 +92,7 @@ which will keep watching all source files until you end the process.
 
 Note: For production you should use
 
-`$ ./node_modules/.bin/gulp --production`
+`$ ./node_modules/.bin/gulp --prod`
 
 because that will enable minifying (uglyfying) JS as well as CSS files.
 

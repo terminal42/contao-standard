@@ -22,7 +22,7 @@ class Gulp extends AbstractTask
     {
         $prod = $this->getParameter('env', 'dev') === 'prod';
 
-        if (!$this->runCommandLocal('gulp'.($prod ? ' --production' : ''))) {
+        if (!$this->runCommandLocal('gulp'.($prod ? ' --prod' : ''))) {
             return false;
         }
 

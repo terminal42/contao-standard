@@ -15,7 +15,7 @@ const autoprefixer  = require('autoprefixer');
 const concat        = require('gulp-concat');
 const svgo          = require('gulp-svgo');
 
-const production    = !!gutil.env.production;
+const production    = !!gutil.env.prod;
 
 // Build app.js
 gulp.task('scripts', function () {

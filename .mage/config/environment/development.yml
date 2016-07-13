@@ -16,6 +16,7 @@ deployment:
         - ^app/logs
         - ^assets
         - ^files
+        - ^node_modules
         - ^system/logs
         - ^system/modules
         - ^system/themes

@@ -162,5 +162,32 @@ If you want/need to change any of this, just look at
 `app/Resources/contao/config.php`.
 
 
+Troubleshooting
+---------------
+
+##### Deployment fails due to ```chown: command not found```. #####
+
+On some server the ```chown``` command is not available which makes the deployment impossible. Unfortunately
+the genuine Magallanes package does not support checking for that command beforehand executing. For more
+information see https://github.com/andres-montanez/Magallanes/pull/268
+
+To bypass this problem you can ues a custom package by georgringer. Add the following lines to the composer.json file: 
+
+```
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/georgringer/Magallanes.git"
+    }
+],
+```
+
+and update the package by running:
+
+```
+php composer.phar update andres-montanez/magallanes
+```
+
+Then try to deploy your app again.
 
 [mage]: http://magephp.com

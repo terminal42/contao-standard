@@ -4,7 +4,7 @@ namespace Task;
 
 use Mage\Task\BuiltIn\Symfony2\SymfonyAbstractTask;
 
-class DoctrineMigrateTask extends SymfonyAbstractTask
+class DoctrineMigrate extends SymfonyAbstractTask
 {
     /**
      * @inheritdoc

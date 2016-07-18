@@ -57,10 +57,10 @@ tasks:
         - composer/generate-autoload
         - symfony2/cache-warmup: {env: prod}
         - symfony2/assets-install: {env: prod, symlink: true, relative: true}
-        - contao-install
-        - maintenance-lock
+        - contao-install: {env: prod}
+        - maintenance-lock: {env: prod}
     post-release:
         - doctrine-migrate: {env: prod}
         - doctrine-clear: {env: prod}
         - symfony2/cache-clear: {env: prod}
-        - maintenance-unlock
+        - maintenance-unlock: {env: prod}

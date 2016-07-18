@@ -20,7 +20,9 @@ class MaintenanceLock extends SymfonyAbstractTask
      */
     public function run()
     {
-        if (!$this->runCommandRemote($this->getAppPath() . ' lexik:maintenance:lock')) {
+        $env = $this->getParameter('env', 'dev');
+
+        if (!$this->runCommandRemote($this->getAppPath() . ' lexik:maintenance:lock --env=' . $env)) {
             return false;
         }
 

@@ -20,7 +20,9 @@ class MaintenanceUnlock extends SymfonyAbstractTask
      */
     public function run()
     {
-        if (!$this->runCommandRemote($this->getAppPath() . ' lexik:maintenance:unlock')) {
+        $env = $this->getParameter('env', 'dev');
+
+        if (!$this->runCommandRemote($this->getAppPath() . ' lexik:maintenance:unlock --env=' . $env)) {
             return false;
         }
 

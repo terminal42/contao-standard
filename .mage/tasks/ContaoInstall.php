@@ -20,11 +20,13 @@ class ContaoInstall extends SymfonyAbstractTask
      */
     public function run()
     {
+        $env = $this->getParameter('env', 'dev');
+
         $commands = [
-            $this->getAppPath() . ' contao:install',
-            $this->getAppPath() . ' contao:symlink',
-            'test -f "system/config/localconfig.php" && ' . $this->getAppPath() . ' contao:automator purgePageCache',
-            'test -f "system/config/localconfig.php" && ' . $this->getAppPath() . ' contao:automator generateXmlFiles',
+            $this->getAppPath() . ' contao:install --env=' . $env,
+            $this->getAppPath() . ' contao:symlink --env=' . $env,
+            'test -f "system/config/localconfig.php" && ' . $this->getAppPath() . ' contao:automator purgePageCache --env=' . $env,
+            'test -f "system/config/localconfig.php" && ' . $this->getAppPath() . ' contao:automator generateXmlFiles --env=' . $env,
         ];
 
         foreach ($commands as $command) {

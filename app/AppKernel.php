@@ -32,6 +32,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
 
             new Contao\CoreBundle\ContaoCoreBundle(),
+            new Contao\InstallationBundle\ContaoInstallationBundle(),
 
             new Terminal42\FolderpageBundle\Terminal42FolderpageBundle(),
             new Contao\CoreBundle\HttpKernel\Bundle\ContaoModuleBundle('ce-access', $this->getRootDir()),
@@ -48,7 +49,6 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
-            $bundles[] = new Contao\InstallationBundle\ContaoInstallationBundle();
         }
 
         return $bundles;

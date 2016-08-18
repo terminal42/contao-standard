@@ -22,7 +22,7 @@ class MaintenanceUnlock extends SymfonyAbstractTask
     {
         $env = $this->getParameter('env', 'dev');
 
-        if (!$this->runCommandRemote($this->getAppPath() . ' lexik:maintenance:unlock --env=' . $env)) {
+        if (!$this->runCommandRemote($this->getAppPath() . ' lexik:maintenance:unlock --no-interaction --env=' . $env)) {
             return false;
         }
 

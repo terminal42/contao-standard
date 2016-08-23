@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
             new Lexik\Bundle\MaintenanceBundle\LexikMaintenanceBundle(),
+            new Knp\Bundle\TimeBundle\KnpTimeBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
 
             new Contao\CoreBundle\ContaoCoreBundle(),

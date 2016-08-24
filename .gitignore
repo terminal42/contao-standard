@@ -4,17 +4,16 @@
 # Generated files
 /web/layout/app.css
 /web/layout/app.js
+composer.lock
+app/bootstrap.php.cache
 
 # Generated folders
 /assets/
 /files/
-/node_modules/
 /system/
 /templates/
-/vendor/
-
-# Node.js modules
 /node_modules/
+/vendor/
 
 # Symlinked resources
 /web/assets
@@ -23,6 +22,3 @@
 /web/share/
 /web/system/
 /web/vendor/
-
-# Skip files
-/system/modules/*/.skip

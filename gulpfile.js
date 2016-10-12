@@ -13,7 +13,8 @@ const cleanCSS      = require('gulp-clean-css');
 const postcss       = require('gulp-postcss');
 const autoprefixer  = require('autoprefixer');
 const concat        = require('gulp-concat');
-const svgo          = require('gulp-svgo');
+const svgmin        = require('gulp-svgmin');
+const path          = require('path');
 
 const production    = !!gutil.env.prod;
 
@@ -47,7 +48,19 @@ gulp.task('styles', function () {
 // Run SVG optimization
 gulp.task('svgo', function () {
     return gulp.src('web/layout/images/*')
-        .pipe(svgo())
+        .pipe(svgmin(function (file) {
+            var prefix = path.basename(file.relative, path.extname(file.relative));
+
+            // Ensure the ID attributes in SVG files are unique
+            return {
+                plugins: [{
+                    cleanupIDs: {
+                        prefix: prefix + '-',
+                        minify: true
+                    }
+                }]
+            }
+        }))
         .pipe(gulp.dest('web/layout/images'));
 });
 

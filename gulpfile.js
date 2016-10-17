@@ -47,7 +47,7 @@ gulp.task('styles', function () {
 
 // Run SVG optimization
 gulp.task('svgo', function () {
-    return gulp.src('web/layout/images/*')
+    return gulp.src('web/layout/images/**/*.svg')
         .pipe(svgmin(function (file) {
             var prefix = path.basename(file.relative, path.extname(file.relative));
 

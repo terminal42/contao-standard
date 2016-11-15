@@ -30,7 +30,6 @@ deployment:
 
 releases:
     enabled: true
-    max: 5
     symlink: current
     directory: releases
 
@@ -60,3 +59,5 @@ tasks:
         - doctrine-clear
         - symfony2/cache-clear: {optional: "--no-optional-warmers"} # will not build the internal cache
         - maintenance-unlock
+    post-deploy:
+        - clean-releases: {max: 5}

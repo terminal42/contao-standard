@@ -35,7 +35,6 @@ deployment:
 
 releases:
     enabled: true
-    max: 5
     symlink: current
     directory: releases
 
@@ -64,3 +63,5 @@ tasks:
         - doctrine-clear: {env: prod}
         - symfony2/cache-clear: {env: prod}
         - maintenance-unlock: {env: prod}
+    post-deploy:
+        - clean-releases: {max: 5}

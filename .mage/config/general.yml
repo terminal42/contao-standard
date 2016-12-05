@@ -8,3 +8,4 @@ ssh_needs_tty: true
 scm: git
 composer_cmd: "php56 /home/example/public_html/composer.phar"
 symfony_app_path: "php56 app/console"
+symfony_version: 3

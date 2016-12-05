@@ -8,10 +8,6 @@ framework:
         strict_requirements: true
     profiler: { only_exceptions: false }
 
-# Contao configuration
-contao:
-    pretty_error_screens: false
-
 # Web profiler configuration
 web_profiler:
     toolbar: true
@@ -22,13 +18,13 @@ monolog:
     handlers:
         contao:
             type: service
-            id:   contao.monolog.handler
+            id: contao.monolog.handler
         main:
-            type:      rotating_file
+            type: rotating_file
             max_files: 10
-            path:      "%kernel.logs_dir%/%kernel.environment%.log"
-            level:     info
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            level: info
         console:
-            type:   console
+            type: console
             bubble: false
             channels: [!event, !doctrine]

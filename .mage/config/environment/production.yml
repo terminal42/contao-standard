@@ -13,15 +13,16 @@ deployment:
         - .gitignore
         - phpunit.*
         - bootstrap.php
-        - ^app/cache
         - ^app/config/parameters.yml
-        - ^app/logs
         - ^assets
         - ^files
         - ^node_modules
         - ^system/logs
         - ^system/modules
         - ^system/themes
+        - ^tests
+        - ^var/cache
+        - ^var/logs
         - ^vendor
         - ^web/assets
         - ^web/bundles
@@ -50,7 +51,7 @@ tasks:
             linked_files:
                 - app/config/parameters.yml: relative
             linked_folders:
-                - app/logs: relative
+                - var/logs: relative
                 - files: relative
         - composer/install: {dev: false}
         - composer/generate-autoload

@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": ">=5.5.0",
-        "symfony/symfony": "~2.8|~3.0",
+        "symfony/symfony": "~3.2",
         "symfony/monolog-bundle": "~2.8",
         "symfony/swiftmailer-bundle": "~2.3",
         "sensio/distribution-bundle": "~5.0",
@@ -18,8 +18,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "doctrine/doctrine-bundle": "~1.6",
 
-        "contao/core-bundle": "4.2.*",
-        "contao/installation-bundle": "~1.1",
+        "contao/core-bundle": "4.3.*",
+        "contao/installation-bundle": "~1.2",
 
         "terminal42/notification_center": "~1.4",
         "terminal42/contao-leads": "~2.0",
@@ -43,8 +43,8 @@
         }
     },
     "config": {
-        "preferred-install": "dist",
-        "component-dir": "assets"
+        "component-dir": "assets",
+        "preferred-install": "dist"
     },
     "extra": {
         "incenteev-parameters": {
@@ -53,8 +53,10 @@
                 "secret": "CONTAO_RANDOM_SECRET"
             }
         },
-        "symfony-bin-dir": "app",
-        "symfony-var-dir": "app",
+        "symfony-app-dir": "app",
+        "symfony-bin-dir": "bin",
+        "symfony-var-dir": "var",
+        "symfony-web-dir": "web",
         "symfony-assets-install": "relative"
     },
     "scripts": {

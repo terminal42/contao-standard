@@ -2,9 +2,9 @@
 
 namespace Task;
 
-use Mage\Task\AbstractTask;
+use Mage\Task\BuiltIn\Symfony2\SymfonyAbstractTask;
 
-class UnitTests extends AbstractTask
+class UnitTests extends SymfonyAbstractTask
 {
 
     /**
@@ -20,11 +20,12 @@ class UnitTests extends AbstractTask
      */
     public function run()
     {
-        if (!$this->runCommandLocal('vendor/bin/phpunit')) {
-            return false;
-        }
+        // Enable to run unit tests
+        //if (!$this->runCommandLocal('vendor/bin/phpunit')) {
+        //    return false;
+        //}
 
         // This will test if the application is bootable (building the container)
-        return $this->runCommandLocal('app/console contao:version');
+        return $this->runCommandLocal($this->getAppPath() . ' contao:version');
     }
 }

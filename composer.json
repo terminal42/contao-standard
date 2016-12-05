@@ -37,7 +37,6 @@
     },
     "autoload": {
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ],
-        "exclude-from-classmap": ["/src/AppBundle/Tests/"],
         "psr-4": {
             "AppBundle\\": "src/AppBundle/"
         }

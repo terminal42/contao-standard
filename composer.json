@@ -22,9 +22,9 @@
         "contao/installation-bundle": "~1.2",
 
         "terminal42/notification_center": "~1.4",
-        "terminal42/contao-leads": "~2.0",
+        "terminal42/contao-leads": "~2.0@dev",
         "terminal42/contao-ce-access": "~2.1",
-        "terminal42/contao-folderpage": "~2.0",
+        "terminal42/contao-folderpage": "~2.0@dev",
 
         "lexik/maintenance-bundle": "~2.0",
         "doctrine/orm": "~2.5",
@@ -32,7 +32,7 @@
         "doctrine/doctrine-cache-bundle": "~1.0"
     },
     "require-dev": {
-        "andres-montanez/magallanes": "dev-master",
+        "andres-montanez/magallanes": "dev-master@dev",
         "phpunit/phpunit": "4.*"
     },
     "autoload": {
@@ -60,18 +60,20 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap"
+            "Contao\\CoreBundle\\Composer\\ScriptHandler::generateRandomSecret",
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Contao\\CoreBundle\\Composer\\ScriptHandler::addDirectories",
+            "Contao\\CoreBundle\\Composer\\ScriptHandler::generateSymlinks"
         ],
         "post-update-cmd": [
             "Contao\\CoreBundle\\Composer\\ScriptHandler::generateRandomSecret",
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Contao\\CoreBundle\\Composer\\ScriptHandler::addDirectories",
             "Contao\\CoreBundle\\Composer\\ScriptHandler::generateSymlinks"
         ]
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }

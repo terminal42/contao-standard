@@ -65,10 +65,6 @@ doctrine_migrations: ~
 
 doctrine_cache:
     providers:
-        google_api:
-            file_system:
-                extension: ".cache"
-                directory: "%kernel.cache_dir%/google_api/"
         doctrine_metadata_cache:
             file_system:
                 extension: ".cache"

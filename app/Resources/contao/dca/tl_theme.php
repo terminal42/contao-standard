@@ -1,4 +1,4 @@
 <?php
 
 // Remove style sheets from themes
-unset($GLOBALS['TL_DCA']['tl_theme']['operations']['css']);
+unset($GLOBALS['TL_DCA']['tl_theme']['list']['operations']['css']);

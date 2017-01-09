@@ -27,6 +27,20 @@ framework:
 contao:
     prepend_locale: "%prepend_locale%"
     encryption_key: "%kernel.secret%"
+    localconfig:
+        licenseAccepted: true
+        installPassword: ~
+        websiteTitle: ~
+        adminEmail: ~
+        enableSearch: false
+        datimFormat: d.m.Y H:i
+        dateFormat: d.m.Y
+
+        # Adjust the upload image settings
+        maxFileSize: 20480000
+        imageWidth: 2500
+        imageHeight: 2500
+        jpgQuality: 100
 
 # Twig configuration
 twig:

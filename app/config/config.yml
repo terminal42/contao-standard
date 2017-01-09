@@ -29,7 +29,7 @@ contao:
     encryption_key: "%kernel.secret%"
     localconfig:
         licenseAccepted: true
-        installPassword: ~
+        installPassword: "%install_password%"
         websiteTitle: ~
         adminEmail: ~
         enableSearch: false

@@ -18,3 +18,4 @@ parameters:
     prepend_locale:    false
 
     secret:            ThisTokenIsNotSoSecretChangeIt
+    install_password:  ~

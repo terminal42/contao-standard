@@ -1,40 +1,16 @@
-imports:
-    - { resource: parameters.yml }
-    - { resource: security.yml }
 
-# Put parameters here that don't need to change on each machine where the app is deployed
-# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
-parameters:
-    locale: en
-
-# Framework configuration
-framework:
-    esi: { enabled: true }
-    translator: { fallbacks: ["%locale%"] }
-    secret: "%secret%"
-    router:
-        resource: "%kernel.root_dir%/config/routing.yml"
-        strict_requirements: ~
-    csrf_protection: ~
-    templating:
-        engines: ['twig']
-    default_locale: "%locale%"
-    session:
-        handler_id: ~
-    fragments: { path: /_fragment }
-
-# Contao configuration
 contao:
-    prepend_locale: "%prepend_locale%"
-    encryption_key: "%kernel.secret%"
+    prepend_locale: true
     localconfig:
         licenseAccepted: true
+        enableSearch: false
+        disableCron: true
+
         installPassword: "%install_password%"
         websiteTitle: ~
         adminEmail: ~
-        enableSearch: false
-        datimFormat: d.m.Y H:i
-        dateFormat: d.m.Y
+        dateFormat: "d.m.Y"
+        datimFormat: "d.m.Y H:i"
 
         # Adjust the upload image settings
         maxFileSize: 20480000
@@ -42,68 +18,12 @@ contao:
         imageHeight: 2500
         jpgQuality: 100
 
-# Twig configuration
-twig:
-    debug: "%kernel.debug%"
-    strict_variables: "%kernel.debug%"
-
-# Doctrine configuration
-doctrine:
-    dbal:
-        default_connection: default
-        connections:
-            default:
-                driver: pdo_mysql
-                host: "%database_host%"
-                port: "%database_port%"
-                user: "%database_user%"
-                password: "%database_password%"
-                dbname: "%database_name%"
-                charset: UTF8
-# ORM configuration
-#    orm:
-#        auto_generate_proxy_classes: "%kernel.debug%"
-#        naming_strategy: doctrine.orm.naming_strategy.default
-#        auto_mapping: true
-#
-#        metadata_cache_driver:
-#            type: service
-#            id: doctrine_cache.providers.doctrine_metadata_cache
-#        result_cache_driver:
-#            type: service
-#            id: doctrine_cache.providers.doctrine_result_cache
-#        query_cache_driver:
-#            type: service
-#            id: doctrine_cache.providers.doctrine_query_cache
-
 doctrine_migrations: ~
 
-doctrine_cache:
-    providers:
-        doctrine_metadata_cache:
-            file_system:
-                extension: ".cache"
-                directory: "%kernel.cache_dir%/doctrine/metadata"
-        doctrine_result_cache:
-            file_system:
-                extension: ".cache"
-                directory: "%kernel.cache_dir%/doctrine/result"
-        doctrine_query_cache:
-            file_system:
-                extension: ".cache"
-                directory: "%kernel.cache_dir%/doctrine/query"
+accelerator_cache:
+    host: %platform_host%
+    web_dir: %kernel.root_dir%/../web
 
-# SwiftMailer configuration
-swiftmailer:
-    transport: "%mailer_transport%"
-    host: "%mailer_host%"
-    username: "%mailer_user%"
-    password: "%mailer_password%"
-    port: "%mailer_port%"
-    encryption: "%mailer_encryption%"
-
-# Lexik configuration
-lexik_maintenance:
-    driver:
-        class: "Lexik\\Bundle\\MaintenanceBundle\\Drivers\\FileDriver"
-        options: { file_path: "%kernel.cache_dir%/lock" }
+imports:
+#    - { resource: orm.yml }
+    - { resource: services.yml }

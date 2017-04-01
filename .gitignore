@@ -2,17 +2,20 @@
 /app/config/parameters.yml
 
 # Generated files
-/web/layout/app.css
-/web/layout/app.js
-composer.lock
-app/bootstrap.php.cache
+/app/Resources/contao/config/runonce.php
+/web/install.php
+/web/app.php
+/web/layout/*.css
+/web/layout/*.js
 
 # Generated folders
+/.mage_logs/
 /assets/
 /files/
+/node_modules/
 /system/
 /templates/
-/node_modules/
+/var/
 /vendor/
 
 # Symlinked resources
@@ -21,4 +24,3 @@ app/bootstrap.php.cache
 /web/files/
 /web/share/
 /web/system/
-/web/vendor/

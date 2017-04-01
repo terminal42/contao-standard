@@ -8,6 +8,9 @@
  * @license LGPL-3.0+
  */
 
+use Contao\ManagerBundle\ContaoManager\Plugin as ManagerBundlePlugin;
+use Contao\ManagerBundle\HttpKernel\ContaoKernel;
+use Doctrine\Common\Annotations\AnnotationRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
 
@@ -29,8 +32,7 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
         die(sprintf('You are not allowed to access this file. Check %s for more information.', basename(__FILE__)));
     }
 
-    if (!isset($_SERVER['PHP_AUTH_USER'])
-        || !isset($_SERVER['PHP_AUTH_PW'])
+    if (!isset($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'])
         || hash('sha512', $_SERVER['PHP_AUTH_USER'].':'.$_SERVER['PHP_AUTH_PW']) !== $accessKey
     ) {
         header('WWW-Authenticate: Basic realm="Contao debug"');
@@ -42,11 +44,16 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
 unset($accessKey);
 
 /** @var Composer\Autoload\ClassLoader */
-$loader = require __DIR__.'/../app/autoload.php';
+$loader = require __DIR__.'/../vendor/autoload.php';
 
+AnnotationRegistry::registerLoader([$loader, 'loadClass']);
+ManagerBundlePlugin::autoloadModules(__DIR__.'/../system/modules');
 Debug::enable();
 
-$kernel = new AppKernel('dev', true);
+$kernel = new ContaoKernel('dev', true);
+$kernel->setRootDir(dirname(__DIR__).'/app');
+
+Request::enableHttpMethodParameterOverride();
 
 // Handle the request
 $request = Request::createFromGlobals();

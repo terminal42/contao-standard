@@ -1,6 +1,7 @@
 'use strict';
 
 const gulp = require('gulp');
+const sftp = require('gulp-sftp');
 const uglify = require('gulp-uglify');
 const gutil = require('gulp-util');
 const sourcemaps = require('gulp-sourcemaps');
@@ -15,6 +16,12 @@ const browserify = require('browserify');
 const babelify = require('babelify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
+
+const remoteConfig = {
+    host: '%HOSTNAME%',
+    user: '%USERNAME%',
+    remotePath: '/home/%USERNAME%/public_html/current/web/layout'
+};
 
 // ESLint
 gulp.task('lint', function () {
@@ -71,6 +78,11 @@ gulp.task('images', function () {
     .pipe(gulp.dest('web/layout/images'));
 });
 
+gulp.task('deploy', function() {
+    gulp.src(['web/layout/*', 'web/layout/**/*'])
+    .pipe(sftp(remoteConfig));
+});
+
 // Watch task
 gulp.task('watch', function () {
     gulp.watch(['web/layout/images/**/*'], ['images']);
@@ -86,3 +98,10 @@ gulp.task('build', ['lint', 'images', 'scripts', 'styles']);
 
 // Build and watch task
 gulp.task('build:watch', ['images', 'scripts', 'styles', 'watch']);
+
+// Watch & Deploy task
+gulp.task('build:watch:deploy', ['build:watch'], function () {
+    gulp.watch(['web/layout/*.css', 'web/layout/*.js'], function(result) {
+        gulp.src([result.path]).pipe(sftp(remoteConfig));
+    });
+});

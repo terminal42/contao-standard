@@ -3,7 +3,6 @@
 const gulp = require('gulp');
 const sftp = require('gulp-sftp');
 const uglify = require('gulp-uglify');
-const gutil = require('gulp-util');
 const sourcemaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
@@ -25,7 +24,7 @@ const remoteConfig = {
 
 // ESLint
 gulp.task('lint', function () {
-    return gulp.src(['web/layout/scripts/*.js', 'web/layout/scripts/**/*.js'])
+    return gulp.src(['layout/scripts/*.js', 'layout/scripts/**/*.js'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
@@ -33,10 +32,10 @@ gulp.task('lint', function () {
 
 // Build JavaScript
 gulp.task('scripts', function () {
-    return browserify({entries: 'web/layout/scripts/app.js'})
+    return browserify({entries: 'layout/scripts/app.js'})
     .transform(babelify)
     .bundle()
-    .pipe(source('web/layout/scripts/app.js'))
+    .pipe(source('layout/scripts/app.js'))
     .pipe(buffer())
     .pipe(uglify())
     .pipe(rename('app.js'))
@@ -45,7 +44,7 @@ gulp.task('scripts', function () {
 
 // Build SCSS
 gulp.task('styles', function () {
-    return gulp.src('web/layout/styles/[^_]*.scss', {base: 'web/layout/styles'})
+    return gulp.src('layout/styles/[^_]*.scss', {base: 'layout/styles'})
     .pipe(sourcemaps.init())
     .pipe(sass())
     .pipe(postcss([autoprefixer({browsers: ['> 5%']})]))
@@ -56,7 +55,7 @@ gulp.task('styles', function () {
 
 // Run image optimization
 gulp.task('images', function () {
-    gulp.src(['web/layout/images/*', 'web/layout/images/**/*'], {base: 'web/layout/images'})
+    gulp.src(['layout/images/*', 'layout/images/**/*'], {base: 'layout/images'})
     .pipe(imagemin([
         imagemin.gifsicle(),
         imagemin.jpegtran(),
@@ -78,6 +77,12 @@ gulp.task('images', function () {
     .pipe(gulp.dest('web/layout/images'));
 });
 
+// Copy fonts
+gulp.task('fonts', function () {
+    return gulp.src('layout/fonts/**/*')
+    .pipe(gulp.dest('web/layout/fonts'));
+});
+
 gulp.task('deploy', function() {
     gulp.src(['web/layout/*', 'web/layout/**/*'])
     .pipe(sftp(remoteConfig));
@@ -85,19 +90,19 @@ gulp.task('deploy', function() {
 
 // Watch task
 gulp.task('watch', function () {
-    gulp.watch(['web/layout/images/**/*'], ['images']);
-    gulp.watch(['web/layout/scripts/*.js', 'web/layout/scripts/**/*.js'], ['scripts']);
-    gulp.watch(['web/layout/styles/*.scss', 'web/layout/styles/**/*.scss'], ['styles']);
+    gulp.watch(['layout/images/**/*'], ['images']);
+    gulp.watch(['layout/scripts/*.js', 'layout/scripts/**/*.js'], ['scripts']);
+    gulp.watch(['layout/styles/*.scss', 'layout/styles/**/*.scss'], ['styles']);
 });
 
 // Build by default
 gulp.task('default', ['build']);
 
 // Build task
-gulp.task('build', ['lint', 'images', 'scripts', 'styles']);
+gulp.task('build', ['lint', 'images', 'scripts', 'styles', 'fonts']);
 
 // Build and watch task
-gulp.task('build:watch', ['images', 'scripts', 'styles', 'watch']);
+gulp.task('build:watch', ['images', 'scripts', 'styles', 'fonts', 'watch']);
 
 // Watch & Deploy task
 gulp.task('build:watch:deploy', ['build:watch'], function () {

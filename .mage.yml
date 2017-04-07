@@ -18,6 +18,7 @@ magephp:
                 - ./app/Resources/contao/config/runonce.php
                 - ./assets
                 - ./files
+                - ./layout
                 - ./node_modules
                 - ./system
                 - ./tests
@@ -26,8 +27,6 @@ magephp:
                 - ./web/assets
                 - ./web/bundles
                 - ./web/files
-                - ./web/layout/scripts
-                - ./web/layout/styles
                 - ./web/share
                 - ./web/system
                 - ./web/.htaccess.production
@@ -84,6 +83,7 @@ magephp:
                 - ./app/Resources/contao/config/runonce.php
                 - ./assets
                 - ./files
+                - ./layout
                 - ./node_modules
                 - ./system
                 - ./tests
@@ -92,8 +92,6 @@ magephp:
                 - ./web/assets
                 - ./web/bundles
                 - ./web/files
-                - ./web/layout/scripts
-                - ./web/layout/styles
                 - ./web/share
                 - ./web/system
                 - ./web/.htaccess.development

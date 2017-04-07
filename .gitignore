@@ -3,10 +3,9 @@
 
 # Generated files
 /app/Resources/contao/config/runonce.php
+/web/layout/
 /web/install.php
 /web/app.php
-/web/layout/*.css
-/web/layout/*.js
 
 # Generated folders
 /.mage_logs/

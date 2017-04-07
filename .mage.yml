@@ -30,6 +30,7 @@ magephp:
                 - ./web/layout/styles
                 - ./web/share
                 - ./web/system
+                - ./web/.htaccess.production
                 - ./web/app.php
                 - ./web/install.php
                 - ./.babelrc
@@ -41,7 +42,6 @@ magephp:
                 - ./package.json
                 - ./phpunit.*
                 - ./README.md
-
             hosts:
                 - %HOSTNAME%
             symfony: { env: 'dev' }
@@ -56,6 +56,7 @@ magephp:
                 - fs/link: { from: '../../../shared/images', to: 'assets/images' }
                 - fs/link: { from: '../../shared/files', to: 'files' }
                 - fs/link: { from: '../../../shared/logs', to: 'var/logs' }
+                - fs/move: { from: 'web/.htaccess.development', to: 'web/.htaccess' }
                 - composer/install: { timeout: 600 }
                 - 'Terminal42\MageTools\Task\Symfony\PlatformReleaseTask'
                 - symfony/cache-warmup: { flags: "--no-optional-warmers" }
@@ -95,6 +96,7 @@ magephp:
                 - ./web/layout/styles
                 - ./web/share
                 - ./web/system
+                - ./web/.htaccess.development
                 - ./web/app_dev.php
                 - ./web/install.php
                 - ./.babelrc
@@ -120,6 +122,7 @@ magephp:
                 - fs/link: { from: '../../../shared/images', to: 'assets/images' }
                 - fs/link: { from: '../../shared/files', to: 'files' }
                 - fs/link: { from: '../../../shared/logs', to: 'var/logs' }
+                - fs/move: { from: 'web/.htaccess.production', to: 'web/.htaccess' }
                 - composer/install: { timeout: 600 }
                 - 'Terminal42\MageTools\Task\Symfony\PlatformReleaseTask'
                 - symfony/cache-warmup

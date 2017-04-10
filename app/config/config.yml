@@ -16,7 +16,6 @@ contao:
         maxFileSize: 20480000
         imageWidth: 2500
         imageHeight: 2500
-        jpgQuality: 100
 
 doctrine_migrations: ~
 

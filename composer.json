@@ -26,6 +26,9 @@
         "terminal42/mage-tools": "dev-develop@dev",
         "phpunit/phpunit": "4.*"
     },
+    "conflict": {
+        "symfony/filesystem": "3.2.7"
+    },
     "autoload": {
         "classmap": [ "app/ContaoManagerPlugin.php" ],
         "psr-4": { "App\\": "src/" }

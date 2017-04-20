@@ -11,6 +11,7 @@ contao:
         adminEmail: ~
         dateFormat: "d.m.Y"
         datimFormat: "d.m.Y H:i"
+        timeZone: 'Europe/Zurich'
 
         # Adjust the upload image settings
         maxFileSize: 20480000
@@ -20,8 +21,8 @@ contao:
 doctrine_migrations: ~
 
 accelerator_cache:
-    host: %platform_host%
-    web_dir: %kernel.root_dir%/../web
+    host: "%platform_host%"
+    web_dir: "%kernel.root_dir%/../web"
 
 imports:
 #    - { resource: orm.yml }

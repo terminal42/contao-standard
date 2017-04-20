@@ -45,7 +45,7 @@ magephp:
                 - %HOSTNAME%
             symfony: { env: 'dev' }
             pre-deploy:
-                - 'Terminal42\MageTools\Task\IntegrityCheck\ContaoTask'
+                - Terminal42\MageTools\Task\IntegrityCheck\ContaoTask
                 - exec: { cmd: './node_modules/.bin/gulp', desc: 'Running Gulp' }
             on-deploy:
                 - composer/self-update
@@ -54,19 +54,21 @@ magephp:
                 - fs/link: { from: '../../../shared/config', to: 'system/config' }
                 - fs/link: { from: '../../../shared/images', to: 'assets/images' }
                 - fs/link: { from: '../../shared/files', to: 'files' }
+                #- fs/link: { from: '../../shared/templates', to: 'templates' }
                 - fs/link: { from: '../../../shared/logs', to: 'var/logs' }
                 - fs/move: { from: 'web/.htaccess.development', to: 'web/.htaccess' }
                 - composer/install: { timeout: 600 }
-                - 'Terminal42\MageTools\Task\Symfony\PlatformReleaseTask'
+                - Terminal42\MageTools\Task\Symfony\PlatformReleaseTask
                 - symfony/cache-warmup: { flags: "--no-optional-warmers" }
                 - symfony/assets-install
                 - fs/move: { from: 'web/app_dev.php', to: 'web/app.php' }
-                - 'Terminal42\MageTools\Task\Maintenance\LockTask'
+                - Terminal42\MageTools\Task\Maintenance\LockTask
             on-release:
-                - 'Terminal42\MageTools\Task\Symfony\AcceleratorCacheClearTask'
+                - Terminal42\MageTools\Task\Symfony\AcceleratorCacheClearTask
             post-release:
-                - 'Terminal42\MageTools\Task\Doctrine\MigrateTask'
-                - 'Terminal42\MageTools\Task\Maintenance\UnlockTask'
+                - Terminal42\MageTools\Task\Doctrine\MigrateTask
+                - Terminal42\MageTools\Task\Maintenance\UnlockTask
+                - deploy/release/cleanup
 
         # Production
         production:
@@ -114,20 +116,22 @@ magephp:
                 - exec: { cmd: './node_modules/.bin/gulp --prod', desc: 'Running Gulp' }
             on-deploy:
                 - composer/self-update
-                - exec: { cmd: 'mkdir assets && mkdir system && mkdir var', desc: 'Creating initial directores' }
+                - exec: { cmd: 'mkdir assets && mkdir system && mkdir var', desc: 'Creating initial directories' }
                 - fs/link: { from: '../../../../shared/config/parameters.yml', to: 'app/config/parameters.yml' }
                 - fs/link: { from: '../../../shared/config', to: 'system/config' }
                 - fs/link: { from: '../../../shared/images', to: 'assets/images' }
                 - fs/link: { from: '../../shared/files', to: 'files' }
+                #- fs/link: { from: '../../shared/templates', to: 'templates' }
                 - fs/link: { from: '../../../shared/logs', to: 'var/logs' }
                 - fs/move: { from: 'web/.htaccess.production', to: 'web/.htaccess' }
                 - composer/install: { timeout: 600 }
-                - 'Terminal42\MageTools\Task\Symfony\PlatformReleaseTask'
+                - Terminal42\MageTools\Task\Symfony\PlatformReleaseTask
                 - symfony/cache-warmup
                 - symfony/assets-install
-                - 'Terminal42\MageTools\Task\Maintenance\LockTask'
+                - Terminal42\MageTools\Task\Maintenance\LockTask
             on-release:
-                - 'Terminal42\MageTools\Task\Symfony\AcceleratorCacheClearTask'
+                - Terminal42\MageTools\Task\Symfony\AcceleratorCacheClearTask
             post-release:
-                - 'Terminal42\MageTools\Task\Doctrine\MigrateTask'
-                - 'Terminal42\MageTools\Task\Maintenance\UnlockTask'
+                - Terminal42\MageTools\Task\Doctrine\MigrateTask
+                - Terminal42\MageTools\Task\Maintenance\UnlockTask
+                - deploy/release/cleanup

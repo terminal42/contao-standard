@@ -2,6 +2,38 @@ magephp:
     log_dir: ./.mage_logs
     composer: { path: 'php71 /home/%USERNAME%@/public_html/composer.phar' }
     symfony: { console: 'php71 ./vendor/bin/contao-console' }
+    exclude:
+        - ._*
+        - .DS_Store
+        - ./.idea
+        - ./.mage_logs
+        - ./app/config/parameters.yml
+        - ./app/Resources/contao/config/runonce.php
+        - ./assets
+        - ./files
+        - ./layout
+        - ./node_modules
+        - ./system
+        - ./tests
+        - ./var
+        - ./vendor
+        - ./web/assets
+        - ./web/bundles
+        - ./web/files
+        - ./web/share
+        - ./web/system
+        - ./web/.htaccess.production
+        - ./web/app.php
+        - ./web/install.php
+        - ./.babelrc
+        - ./.eslintrc.json
+        - ./.gitignore
+        - ./.mage.yml
+        - ./gulpfile.js
+        - ./npm-shrinkwrap.json
+        - ./package.json
+        - ./phpunit.*
+        - ./README.md
     environments:
 
         # Development
@@ -9,38 +41,6 @@ magephp:
             user: %USERNAME%
             host_path: /home/%USERNAME%/public_html
             releases: 3
-            exclude:
-                - ._*
-                - .DS_Store
-                - ./.idea
-                - ./.mage_logs
-                - ./app/config/parameters.yml
-                - ./app/Resources/contao/config/runonce.php
-                - ./assets
-                - ./files
-                - ./layout
-                - ./node_modules
-                - ./system
-                - ./tests
-                - ./var
-                - ./vendor
-                - ./web/assets
-                - ./web/bundles
-                - ./web/files
-                - ./web/share
-                - ./web/system
-                - ./web/.htaccess.production
-                - ./web/app.php
-                - ./web/install.php
-                - ./.babelrc
-                - ./.eslintrc.json
-                - ./.gitignore
-                - ./.mage.yml
-                - ./gulpfile.js
-                - ./npm-shrinkwrap.json
-                - ./package.json
-                - ./phpunit.*
-                - ./README.md
             hosts:
                 - %HOSTNAME%
             symfony: { env: 'dev' }
@@ -59,6 +59,7 @@ magephp:
                 - fs/move: { from: 'web/.htaccess.development', to: 'web/.htaccess' }
                 - composer/install: { timeout: 600 }
                 - Terminal42\MageTools\Task\Symfony\PlatformReleaseTask
+                - symfony/cache-clear: { flags: '--no-warmup' }
                 - symfony/cache-warmup: { flags: "--no-optional-warmers" }
                 - symfony/assets-install
                 - fs/move: { from: 'web/app_dev.php', to: 'web/app.php' }
@@ -76,38 +77,6 @@ magephp:
             branch: master
             host_path: /home/%USERNAME%/public_html
             releases: 3
-            exclude:
-                - ._*
-                - .DS_Store
-                - ./.idea
-                - ./.mage_logs
-                - ./app/config/parameters.yml
-                - ./app/Resources/contao/config/runonce.php
-                - ./assets
-                - ./files
-                - ./layout
-                - ./node_modules
-                - ./system
-                - ./tests
-                - ./var
-                - ./vendor
-                - ./web/assets
-                - ./web/bundles
-                - ./web/files
-                - ./web/share
-                - ./web/system
-                - ./web/.htaccess.development
-                - ./web/app_dev.php
-                - ./web/install.php
-                - ./.babelrc
-                - ./.eslintrc.json
-                - ./.gitignore
-                - ./.mage.yml
-                - ./gulpfile.js
-                - ./npm-shrinkwrap.json
-                - ./package.json
-                - ./phpunit.*
-                - ./README.md
             hosts:
                 - %HOSTNAME%
             symfony: { env: 'prod' }
@@ -126,7 +95,8 @@ magephp:
                 - fs/move: { from: 'web/.htaccess.production', to: 'web/.htaccess' }
                 - composer/install: { timeout: 600 }
                 - Terminal42\MageTools\Task\Symfony\PlatformReleaseTask
-                - symfony/cache-warmup
+                - symfony/cache-clear: { flags: '--no-warmup' }
+                - symfony/cache-warmup: { flags: "--no-optional-warmers" }
                 - symfony/assets-install
                 - Terminal42\MageTools\Task\Maintenance\LockTask
             on-release:

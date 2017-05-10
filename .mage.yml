@@ -96,7 +96,7 @@ magephp:
                 - composer/install: { timeout: 600 }
                 - Terminal42\MageTools\Task\Symfony\PlatformReleaseTask
                 - symfony/cache-clear: { flags: '--no-warmup' }
-                - symfony/cache-warmup: { flags: "--no-optional-warmers" }
+                - symfony/cache-warmup
                 - symfony/assets-install
                 - Terminal42\MageTools\Task\Maintenance\LockTask
             on-release:

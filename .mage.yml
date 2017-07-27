@@ -2,6 +2,7 @@ magephp:
     log_dir: ./.mage_logs
     composer: { path: 'php71 /home/%USERNAME%@/public_html/composer.phar' }
     symfony: { console: 'php71 ./vendor/bin/contao-console' }
+    # Deploy using gnu tar!
     exclude:
         - ._*
         - .DS_Store
@@ -44,6 +45,7 @@ magephp:
             hosts:
                 - %HOSTNAME%
             symfony: { env: 'dev' }
+            tar_create_path: gtar
             pre-deploy:
                 - Terminal42\MageTools\Task\IntegrityCheck\ContaoTask
                 - exec: { cmd: './node_modules/.bin/gulp', desc: 'Running Gulp' }
@@ -77,6 +79,7 @@ magephp:
             hosts:
                 - %HOSTNAME%
             symfony: { env: 'prod' }
+            tar_create_path: gtar
             pre-deploy:
                 - 'Terminal42\MageTools\Task\IntegrityCheck\ContaoTask': { console: './vendor/bin/contao-console' }
                 - exec: { cmd: './node_modules/.bin/gulp --prod', desc: 'Running Gulp' }

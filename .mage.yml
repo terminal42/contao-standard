@@ -57,11 +57,8 @@ magephp:
                 #- fs/link: { from: '../../shared/templates', to: 'templates' }
                 - fs/link: { from: '../../../shared/logs', to: 'var/logs' }
                 - fs/move: { from: 'web/.htaccess.development', to: 'web/.htaccess' }
-                - composer/install: { timeout: 600 }
                 - Terminal42\MageTools\Task\Symfony\PlatformReleaseTask
-                - symfony/cache-clear: { flags: '--no-warmup' }
-                - symfony/cache-warmup: { flags: "--no-optional-warmers" }
-                - symfony/assets-install
+                - composer/install: { timeout: 600 }
                 - fs/move: { from: 'web/app_dev.php', to: 'web/app.php' }
                 - Terminal42\MageTools\Task\Maintenance\LockTask
             on-release:
@@ -93,11 +90,8 @@ magephp:
                 #- fs/link: { from: '../../shared/templates', to: 'templates' }
                 - fs/link: { from: '../../../shared/logs', to: 'var/logs' }
                 - fs/move: { from: 'web/.htaccess.production', to: 'web/.htaccess' }
-                - composer/install: { timeout: 600 }
                 - Terminal42\MageTools\Task\Symfony\PlatformReleaseTask
-                - symfony/cache-clear: { flags: '--no-warmup' }
-                - symfony/cache-warmup
-                - symfony/assets-install
+                - composer/install: { timeout: 600 }
                 - Terminal42\MageTools\Task\Maintenance\LockTask
             on-release:
                 - Terminal42\MageTools\Task\Symfony\AcceleratorCacheClearTask

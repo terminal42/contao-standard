@@ -31,8 +31,8 @@ magephp:
         - ./.gitignore
         - ./.mage.yml
         - ./gulpfile.js
-        - ./npm-shrinkwrap.json
         - ./package.json
+        - ./package-lock.json
         - ./phpunit.*
         - ./README.md
     environments:

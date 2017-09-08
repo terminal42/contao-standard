@@ -92,6 +92,8 @@ configure the hosting.
     - files
     - images
     - logs
+    - share (for sitemaps, etc.)
+    - templates (only if templates are editable from backend; disabled by default)
 
 3. Manually upload `app/config/parameters.yml.dist` to 
    `/%vhost_root%/shared/config/parameters.yml` and adjust the configuration

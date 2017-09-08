@@ -51,13 +51,14 @@ magephp:
                 - exec: { cmd: './node_modules/.bin/gulp', desc: 'Running Gulp' }
             on-deploy:
                 - composer/self-update
-                - exec: { cmd: 'mkdir assets && mkdir system && mkdir var', desc: 'Creating initial directories' }
+                - exec: { cmd: 'mkdir assets && mkdir system && mkdir var && mkdir -p web', desc: 'Creating initial directories' }
                 - fs/link: { from: '../../../../shared/config/parameters.yml', to: 'app/config/parameters.yml' }
                 - fs/link: { from: '../../../shared/config', to: 'system/config' }
                 - fs/link: { from: '../../../shared/images', to: 'assets/images' }
                 - fs/link: { from: '../../shared/files', to: 'files' }
                 #- fs/link: { from: '../../shared/templates', to: 'templates' }
                 - fs/link: { from: '../../../shared/logs', to: 'var/logs' }
+                - fs/link: { from: '../../../shared/share', to: 'web/share' }
                 - fs/move: { from: 'web/.htaccess.development', to: 'web/.htaccess' }
                 - Terminal42\MageTools\Task\Symfony\PlatformReleaseTask
                 - composer/install: { timeout: 600 }
@@ -85,13 +86,14 @@ magephp:
                 - exec: { cmd: './node_modules/.bin/gulp --prod', desc: 'Running Gulp' }
             on-deploy:
                 - composer/self-update
-                - exec: { cmd: 'mkdir assets && mkdir system && mkdir var', desc: 'Creating initial directories' }
+                - exec: { cmd: 'mkdir assets && mkdir system && mkdir var && mkdir -p web', desc: 'Creating initial directories' }
                 - fs/link: { from: '../../../../shared/config/parameters.yml', to: 'app/config/parameters.yml' }
                 - fs/link: { from: '../../../shared/config', to: 'system/config' }
                 - fs/link: { from: '../../../shared/images', to: 'assets/images' }
                 - fs/link: { from: '../../shared/files', to: 'files' }
                 #- fs/link: { from: '../../shared/templates', to: 'templates' }
                 - fs/link: { from: '../../../shared/logs', to: 'var/logs' }
+                - fs/link: { from: '../../../shared/share', to: 'web/share' }
                 - fs/move: { from: 'web/.htaccess.production', to: 'web/.htaccess' }
                 - Terminal42\MageTools\Task\Symfony\PlatformReleaseTask
                 - composer/install: { timeout: 600 }

@@ -1,14 +1,8 @@
 # App config
 /app/config/parameters.yml
-
-# Generated files
 /app/Resources/contao/config/runonce.php
-/web/layout/
-/web/install.php
-/web/app.php
 
 # Generated folders
-/.mage_logs/
 /assets/
 /files/
 /node_modules/
@@ -16,10 +10,15 @@
 /templates/
 /var/
 /vendor/
+/web/layout/
 
 # Symlinked resources
+/web/.htaccess
 /web/assets
-/web/bundles/
-/web/files/
-/web/share/
-/web/system/
+/web/bundles
+/web/files
+/web/share
+/web/system
+
+# Deployment
+/.mage_logs

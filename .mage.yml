@@ -9,7 +9,7 @@ magephp:
         - ./.idea
         - ./.mage_logs
         - ./app/config/parameters.yml
-        - ./app/Resources/contao/config/runonce.php
+        - ./app/Resources/contao/config/runonce*
         - ./assets
         - ./files
         - ./layout
@@ -35,6 +35,8 @@ magephp:
         - ./package-lock.json
         - ./phpunit.*
         - ./README.md
+        - ./composer.json~
+
     environments:
 
         # Development
@@ -47,7 +49,7 @@ magephp:
             symfony: { env: 'dev' }
             tar_create_path: gtar
             pre-deploy:
-                - Terminal42\MageTools\Task\IntegrityCheck\ContaoTask
+                - Terminal42\MageTools\Task\IntegrityCheck\ContaoTask: { console: './vendor/bin/contao-console' }
                 - exec: { cmd: './node_modules/.bin/gulp', desc: 'Running Gulp' }
             on-deploy:
                 - composer/self-update

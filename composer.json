@@ -8,13 +8,13 @@
         }
     ],
     "require": {
-        "php": ">=5.5.0",
-        "contao/manager-bundle": "4.3.*",
+        "php": "^7.1",
+        "contao/manager-bundle": "4.4.*",
 
         "terminal42/notification_center": "^1.4",
-        "terminal42/contao-leads": "~2.0@dev",
+        "terminal42/contao-leads": "~2.0",
         "terminal42/contao-ce-access": "^2.0.3",
-        "terminal42/contao-folderpage": "~2.0@dev",
+        "terminal42/contao-folderpage": "~2.0",
 
         "smart-core/accelerator-cache-bundle": "^1.2",
         "doctrine/doctrine-migrations-bundle": "^1.2",
@@ -23,11 +23,7 @@
     },
     "require-dev": {
         "andres-montanez/magallanes": "^3.1",
-        "terminal42/mage-tools": "dev-develop@dev",
-        "phpunit/phpunit": "4.*"
-    },
-    "conflict": {
-        "symfony/filesystem": "3.2.7"
+        "terminal42/mage-tools": "dev-develop@dev"
     },
     "autoload": {
         "classmap": [ "app/ContaoManagerPlugin.php" ],

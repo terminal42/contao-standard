@@ -1,0 +1,32 @@
+{
+    "scripts": {
+        "sourceFiles": ["!layout/scripts/**/_*.js", "layout/scripts/**/*.js"],
+        "targetFilename": "app.js",
+        "targetFolder": "web/layout"
+    },
+    "images": {
+        "sourceFiles": ["layout/images/**/*"],
+        "targetFolder": "web/layout/images"
+    },
+    "styles": {
+        "sourceFiles": ["!layout/styles/**/_*.scss", "layout/styles/**/*.scss", "layout/styles/**/*.css"],
+        "targetFolder": "web/layout",
+        "cleanCss": {
+            "level": {
+                "1": {
+                    "all": true,
+                    "roundingPrecision": 5
+                },
+                "2": {
+                    "all": false,
+                    "mergeAdjacentRules" : true,
+                    "mergeNonAdjacentRules" : true,
+                    "mergeMedia": true,
+                    "reduceNonAdjacent": true,
+                    "removeDuplicates": true,
+                    "removeEmpty": true
+                }
+            }
+        }
+    }
+}

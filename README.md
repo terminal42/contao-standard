@@ -87,13 +87,17 @@ configure the hosting.
 
 1. Point your VirtualHost directory to `/%vhost_root%/current/web/`
 
-2. Create the following folders in `/%vhost_root%/shared/`:
+2. Create a `/%vhost_root%/releases/` folder plus the following folders in `/%vhost_root%/shared/`:
     - config
     - files
     - images
     - logs
     - share (for sitemaps, etc.)
     - templates (only if templates are editable from backend; disabled by default)
+    
+    Or just run the command to do that for you:
+    
+    `$ mkdir releases && mkdir -p shared/config && mkdir shared/files && mkdir shared/images && mkdir shared/logs && mkdir shared/share && mkdir shared/templates`
 
 3. Manually upload `app/config/parameters.yml.dist` to 
    `/%vhost_root%/shared/config/parameters.yml` and adjust the configuration

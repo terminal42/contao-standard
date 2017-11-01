@@ -5,6 +5,7 @@ contao:
         licenseAccepted: true
         enableSearch: false
         disableCron: true
+        folderUrl: false
 
         installPassword: "%install_password%"
         websiteTitle: ~

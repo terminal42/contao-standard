@@ -19,6 +19,10 @@ contao:
         imageWidth: 2500
         imageHeight: 2500
 
+framework:
+    assets:
+        json_manifest_path: '%kernel.project_dir%/web/layout/manifest.json'
+
 doctrine_migrations: ~
 
 accelerator_cache:

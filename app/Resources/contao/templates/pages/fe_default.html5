@@ -3,8 +3,8 @@
 $this->extend('fe_page');
 
 $this->viewport = '<meta name="viewport" content="width=device-width,initial-scale=1.0">'."\n";
-$this->stylesheets .= '<link type="text/css" rel="stylesheet" href="layout/app.css">'."\n";
-$this->mootools .= '<script src="layout/app.js"></script>'."\n";
+$this->stylesheets .= '<link type="text/css" rel="stylesheet" href="'.$this->asset('app.css').'">'."\n";
+$this->mootools .= '<script src="'.$this->asset('app.js').'"></script>'."\n";
 
 $GoogleAnalyticsId = \Contao\System::getContainer()->getParameter('analytics_id');
 

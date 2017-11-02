@@ -85,7 +85,7 @@ magephp:
             tar_create_path: gtar
             pre-deploy:
                 - 'Terminal42\MageTools\Task\IntegrityCheck\ContaoTask': { console: './vendor/bin/contao-console' }
-                - exec: { cmd: './node_modules/.bin/gulp --prod', desc: 'Running Gulp' }
+                - exec: { cmd: './node_modules/.bin/encore prod', desc: 'Running Symfony Encore' }
             on-deploy:
                 - composer/self-update
                 - exec: { cmd: 'mkdir assets && mkdir system && mkdir var && mkdir -p web', desc: 'Creating initial directories' }

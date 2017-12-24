@@ -9,10 +9,13 @@
     ],
     "require": {
         "php": "^7.1",
-        "contao/manager-bundle": "4.5.*",
+        "contao/manager-bundle": "4.5.*@dev",
+        "contao/core-bundle": "4.5.*@dev",
+        "contao/installation-bundle": "4.5.*@dev",
+        "contao/manager-plugin": "2.2.*@dev",
 
         "terminal42/notification_center": "^1.4",
-        "terminal42/contao-leads": "~2.0",
+        "terminal42/contao-leads": "~2.0@dev",
         "terminal42/contao-ce-access": "^2.0.3",
         "terminal42/contao-folderpage": "~2.0",
 

@@ -10,15 +10,9 @@
 /templates/
 /var/
 /vendor/
-/web/layout/
-
-# Symlinked resources
-/web/.htaccess
-/web/assets
-/web/bundles
-/web/files
-/web/share
-/web/system
+/web/*
+!/web/.htaccess.development
+!/web/.htaccess.production
 
 # Deployment
 /.mage_logs

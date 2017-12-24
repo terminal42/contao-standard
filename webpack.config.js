@@ -17,7 +17,13 @@ Encore
     .addEntry('app', './layout/scripts/app.js')
 
     // will output as web/layout/global.css
-    //.addStyleEntry('global', './layout/layout/global.scss')
+    //.addStyleEntry('global', './layout/styles/global.scss')
+
+    // will require minified scripts without packing them
+    .addLoader({
+        test: /\.min\.js$/,
+        use: [ 'script-loader' ]
+    })
 
     // allow sass/scss files to be processed
     .enableSassLoader()

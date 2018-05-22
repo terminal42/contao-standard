@@ -3,6 +3,10 @@
     "type": "git",
     "url": "git+github.com/terminal42/contao-standard.git"
   },
+  "scripts": {
+    "dev": "node_modules/.bin/encore dev --watch",
+    "prod": "node_modules/.bin/encore production"
+  },
   "license": "commercial",
   "devDependencies": {
     "@symfony/webpack-encore": "^0.16.0",

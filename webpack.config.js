@@ -28,6 +28,9 @@ Encore
     // allow sass/scss files to be processed
     .enableSassLoader()
 
+    // optimize css files
+    .enablePostCssLoader()
+
     // allow legacy applications to use $/jQuery as a global variable
     //.autoProvidejQuery()
 

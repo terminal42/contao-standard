@@ -1,8 +1,8 @@
 {
-  "repository": {
-    "type": "git",
-    "url": "git+github.com/terminal42/contao-standard.git"
-  },
+  "name": "",
+  "description": "terminal42 Website Project",
+  "author": "terminal42 gmbh <info@terminal42.ch>",
+  "private": true,
   "scripts": {
     "dev": "node_modules/.bin/encore dev --watch",
     "prod": "node_modules/.bin/encore production"
@@ -10,8 +10,14 @@
   "license": "commercial",
   "devDependencies": {
     "@symfony/webpack-encore": "^0.16.0",
+    "autoprefixer": "^8.5.0",
     "node-sass": "^4.7.2",
+    "postcss-loader": "^2.1.5",
     "sass-loader": "^6.0.6",
     "script-loader": "^0.7.2"
-  }
+  },
+  "browserslist": [
+    "last 2 versions",
+    "ios >= 8"
+  ]
 }

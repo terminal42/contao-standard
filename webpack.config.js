@@ -1,4 +1,5 @@
 var Encore = require('@symfony/webpack-encore');
+var SshWebpackPlugin = require('ssh-webpack-plugin');
 
 Encore
     // directory where all compiled assets will be stored
@@ -24,6 +25,23 @@ Encore
         test: /\.min\.js$/,
         use: [ 'script-loader' ]
     })
+
+    // optimize and minify images
+    .addLoader({
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [ 'image-webpack-loader' ]
+    })
+
+    // automatically upload layout files to the Contao installation
+    //.addPlugin(new SshWebpackPlugin({
+    //    host: 'Hostname',
+    //    port: 22,
+    //    username: 'Username',
+    //    privateKey: require('fs').readFileSync(require('path').join(require('os').homedir(), '.ssh/id_rsa')),
+    //    from: 'web/layout',
+    //    to: '/path/to/public_html/web/layout',
+    //    cover: false
+    //}))
 
     // allow sass/scss files to be processed
     .enableSassLoader()

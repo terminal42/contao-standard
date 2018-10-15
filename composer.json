@@ -8,29 +8,28 @@
         }
     ],
     "require": {
-        "php": "^7.1",
-        "contao/manager-bundle": "4.5.*",
+        "php": "^7.3",
+        "contao/manager-bundle": "4.8.0-rc2",
+        "contao/core-bundle": "4.8.0-rc2",
+        "contao/installation-bundle": "4.8.0-rc2",
+        "contao/image": "1.0.0-beta4",
 
         "terminal42/notification_center": "^1.4",
-        "terminal42/contao-leads": "~2.0@dev",
+        "terminal42/contao-leads": "^1.4",
         "terminal42/contao-ce-access": "^2.0.3",
         "terminal42/contao-folderpage": "~2.0",
 
         "smart-core/accelerator-cache-bundle": "^1.2",
-        "doctrine/doctrine-migrations-bundle": "^1.2",
-        "doctrine/orm": "~2.5",
-        "doctrine/doctrine-cache-bundle": "~1.0"
+        "doctrine/doctrine-migrations-bundle": "^1.2"
     },
     "require-dev": {
-        "andres-montanez/magallanes": "^3.1",
-        "terminal42/mage-tools": "dev-develop@dev"
+        "deployer/deployer": "^6.4"
     },
     "autoload": {
-        "classmap": [ "app/ContaoManagerPlugin.php" ],
         "psr-4": { "App\\": "src/" }
     },
-    "config": {
-        "component-dir": "assets"
+    "extra": {
+        "contao-component-dir": "assets"
     },
     "scripts": {
         "post-install-cmd": [

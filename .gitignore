@@ -1,8 +1,3 @@
-# App config
-/app/config/parameters.yml
-/app/Resources/contao/config/runonce.php
-
-# Generated folders
 /assets/
 /files/
 /node_modules/
@@ -11,8 +6,8 @@
 /var/
 /vendor/
 /web/*
-!/web/.htaccess.development
-!/web/.htaccess.production
-
-# Deployment
-/.mage_logs
+!/web/.htaccess
+!/web/robots.txt
+!/web/favicon.ico
+/.env.local
+/.env.*.local

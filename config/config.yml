@@ -7,11 +7,10 @@ contao:
         disableCron: true
         folderUrl: false
 
-        installPassword: "%install_password%"
-        websiteTitle: ~
-        adminEmail: ~
-        dateFormat: "d.m.Y"
-        datimFormat: "d.m.Y H:i"
+        installPassword: '%env(INSTALL_PASSWORD)%'
+        adminEmail: '%env(ADMIN_EMAIL)%'
+        dateFormat: 'd.m.Y'
+        datimFormat: 'd.m.Y H:i'
         timeZone: 'Europe/Zurich'
 
         # Adjust the upload image settings
@@ -20,15 +19,21 @@ contao:
         imageHeight: 2500
 
 framework:
+    secret: '%env(APP_SECRET)%'
     assets:
         json_manifest_path: '%kernel.project_dir%/web/layout/manifest.json'
+
+doctrine:
+    dbal:
+        connections:
+            default:
+                url: '%env(DATABASE_URL)%'
 
 doctrine_migrations: ~
 
 accelerator_cache:
-    host: "%platform_host%"
-    web_dir: "%kernel.root_dir%/../web"
+    host: '%env(APP_HOST)%'
+    web_dir: '%kernel.root_dir%/../web'
 
 imports:
-#    - { resource: orm.yml }
     - { resource: services.yml }

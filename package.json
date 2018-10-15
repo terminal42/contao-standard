@@ -1,6 +1,4 @@
 {
-  "name": "",
-  "description": "terminal42 Website Project",
   "author": "terminal42 gmbh <info@terminal42.ch>",
   "private": true,
   "scripts": {
@@ -9,7 +7,7 @@
   },
   "license": "commercial",
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.16.0",
+    "@symfony/webpack-encore": "^0.27.0",
     "autoprefixer": "^8.5.0",
     "image-webpack-loader": "^4.3.1",
     "node-sass": "^4.7.2",

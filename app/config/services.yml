@@ -1,3 +1,0 @@
-#services:
-#    app.something:
-#        class: AppBundle\Something

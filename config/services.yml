@@ -1,0 +1,14 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    App\:
+        resource: '../src/*'
+
+#    App\Controller\:
+#        resource: '../src/Controller/*'
+#        public: true
+#        tags: ['controller.service_arguments']
+

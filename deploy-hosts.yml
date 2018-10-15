@@ -1,0 +1,11 @@
+.base: &base
+    hostname: www.example.org
+    port: 21
+    user: username
+    stage: production
+    bin/composer: '{{bin/php}} /home/%username%/public_html/composer.phar'
+    bin/php: 'php73'
+
+prod:
+    <<: *base
+    deploy_path: /home/%username%/public_html/www.example.org

@@ -20,7 +20,9 @@
         "doctrine/doctrine-migrations-bundle": "^1.2"
     },
     "require-dev": {
-        "deployer/deployer": "^6.4"
+        "deployer/deployer": "^6.5",
+        "deployer/recipes": "^6.2",
+        "terminal42/deployer-recipes": "dev-master"
     },
     "autoload": {
         "psr-4": { "App\\": "src/" }
